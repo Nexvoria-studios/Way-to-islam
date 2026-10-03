@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#06110d">
+<title>Way to Islam: free Quran app for Android</title>
+<meta name="description" content="Way to Islam is a free Android app to read the Quran offline in a calm, mushaf-inspired design. Free forever.">
+<meta property="og:title" content="Way to Islam: free Quran app for Android">
+<meta property="og:description" content="Read the Quran offline in a calm, mushaf-inspired design. Free forever.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="hero.jpeg">
+<link rel="icon" href="icon.jpeg" type="image/jpeg">
+<link rel="apple-touch-icon" href="icon.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#06110d; --deep:#0b1f17; --mint:#7fdcb4; --emerald:#1f8f63;
+  --parch:#eadfc4; --ink:#14281f; --gold:#c9a45a; --text:#eef6f1; --muted:#a8bdb2;
+  --serif:"Amiri",Georgia,"Times New Roman",serif;
+  --sans:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--night);color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mint);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1080px,100% - 48px);margin-inline:auto}
+
+/* nav */
+.top{position:sticky;top:0;z-index:10;background:rgba(6,17,13,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--serif);font-size:25px;font-weight:700}
+.brand img{width:40px;height:40px;border-radius:11px}
+.nav-link{font-size:14px;font-weight:700;text-decoration:none;color:var(--night);background:var(--mint);padding:10px 18px;border-radius:99px;transition:background .2s}
+.nav-link:hover{background:#a2ebcb}
+
+/* hero */
+.hero{position:relative;text-align:center;padding:64px 0 40px;background:radial-gradient(ellipse 80% 55% at 50% 0%,rgba(31,143,99,.32),transparent 72%)}
+.bismillah{font-family:var(--serif);font-size:clamp(26px,4vw,38px);color:var(--gold);margin:0 0 22px;line-height:1.5}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(44px,8.2vw,88px);line-height:1.04;margin:0 auto 22px;max-width:15ch}
+.lead{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:50ch;margin:0 auto 34px}
+.actions{display:flex;flex-direction:column;align-items:center;gap:16px}
+.btn{display:inline-flex;align-items:center;gap:12px;background:var(--text);color:var(--night);text-decoration:none;font-weight:700;font-size:17px;padding:17px 28px;border-radius:16px;box-shadow:0 14px 40px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.4) inset;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 18px 46px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.4) inset}
+.btn svg{width:22px;height:22px;flex:none}
+.free{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:var(--mint);border:1px solid rgba(127,220,180,.35);background:rgba(127,220,180,.08);padding:8px 16px;border-radius:99px}
+.free svg{width:16px;height:16px}
+.banner{margin:56px auto 0;width:min(920px,100%);border-radius:26px;padding:8px;background:linear-gradient(145deg,rgba(201,164,90,.7),rgba(201,164,90,.15) 40%,rgba(127,220,180,.4));box-shadow:0 40px 100px rgba(31,143,99,.28)}
+.banner img{display:block;width:100%;height:auto;border-radius:19px}
+@media (prefers-reduced-motion:no-preference){
+  .hero .wrap>*{animation:rise .8s both}
+  .hero .wrap>*:nth-child(2){animation-delay:.07s}
+  .hero .wrap>*:nth-child(3){animation-delay:.14s}
+  .hero .wrap>*:nth-child(4){animation-delay:.21s}
+  .hero .wrap>*:nth-child(5){animation-delay:.3s}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+}
+
+/* divider */
+.orn{display:flex;align-items:center;justify-content:center;gap:16px;margin:0 auto;padding:56px 0 0;width:min(320px,70%)}
+.orn::before,.orn::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold))}
+.orn::after{transform:scaleX(-1)}
+.orn svg{width:22px;height:22px;color:var(--gold);flex:none}
+
+/* mushaf panel */
+.mushaf-sec{padding:56px 0 88px}
+.mushaf{background:var(--parch);color:var(--ink);border-radius:22px;padding:12px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.mushaf-in{border:2px solid var(--gold);border-radius:14px;padding:12px}
+.mushaf-in-2{border:1px solid var(--gold);border-radius:9px;padding:clamp(28px,6vw,64px)}
+.mushaf h2{font-family:var(--serif);font-size:clamp(34px,5vw,54px);line-height:1.15;text-align:center;margin:0 auto 14px;max-width:20ch}
+.mushaf .intro{text-align:center;max-width:56ch;margin:0 auto 44px;color:#3d5246;font-size:17px}
+.points{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr)}
+.points li{padding:0 22px;border-left:1px solid rgba(160,125,50,.55)}
+.points li:first-child{border-left:0;padding-left:0}
+.points li:last-child{padding-right:0}
+.points h3{font-family:var(--serif);font-size:25px;line-height:1.2;margin:0 0 8px}
+.points p{margin:0;font-size:15.5px;color:#34493d}
+
+/* steps */
+.steps-sec{padding:0 0 88px}
+.steps-sec h2,.cta h2{font-family:var(--serif);font-size:clamp(34px,5.5vw,56px);line-height:1.1;text-align:center;margin:0 0 40px}
+.steps{list-style:none;counter-reset:s;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.steps li{counter-increment:s;padding:28px;border:1px solid rgba(127,220,180,.2);border-radius:20px;background:linear-gradient(160deg,rgba(31,143,99,.14),rgba(255,255,255,.02))}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);font-family:var(--serif);font-size:22px;margin-bottom:16px}
+.steps h3{margin:0 0 6px;font-size:19px}
+.steps p{margin:0;color:var(--muted);font-size:15.5px}
+
+/* cta */
+.cta{text-align:center;padding:72px 0 96px;background:radial-gradient(ellipse 70% 80% at 50% 100%,rgba(31,143,99,.3),transparent 70%)}
+.cta h2{margin-bottom:14px}
+.cta p{color:var(--muted);max-width:46ch;margin:0 auto 28px}
+
+footer{border-top:1px solid rgba(255,255,255,.1);padding:26px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .points{grid-template-columns:repeat(2,1fr);row-gap:30px}
+  .points li:nth-child(3){border-left:0;padding-left:0}
+  .points li:nth-child(2){padding-right:0}
+}
+@media (max-width:760px){
+  .hero{padding-top:40px}
+  .banner{border-radius:18px;padding:5px;margin-top:40px}
+  .banner img{border-radius:14px}
+  .points{grid-template-columns:1fr;row-gap:0}
+  .points li,.points li:first-child,.points li:last-child,.points li:nth-child(2),.points li:nth-child(3){border-left:0;padding:24px 0;border-top:1px solid rgba(160,125,50,.55)}
+  .points li:first-child{border-top:0;padding-top:0}
+  .points li:last-child{padding-bottom:0}
+  .mushaf-sec{padding-bottom:64px}
+  .steps{grid-template-columns:1fr}
+  .steps-sec,.cta{padding-bottom:64px}
+  .nav-link{padding:9px 15px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="#top"><img src="icon.jpeg" alt="" width="40" height="40"><span>Way to Islam</span></a>
+      <a class="nav-link" href="https://play.google.com/store/apps/details?id=com.wayto.islam">Get the app</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <p class="bismillah" lang="ar" dir="rtl">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+      <h1>A calmer way to keep your faith close</h1>
+      <p class="lead">Way to Islam is an Android app for reading the Quran in a quiet, mushaf-inspired design, made for everyday life.</p>
+      <div class="actions">
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.wayto.islam">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 2.8 13.2 12 3.5 21.2c-.3-.3-.5-.8-.5-1.4V4.2c0-.6.2-1.1.5-1.4Zm10.8 10.3 2.6 2.5-10.9 6.2 8.3-8.7Zm0-2.2L5.9 2l10.9 6.2-2.5 2.7Zm3.7-1.7 2.9 1.7-2.9 2.9-2.9-2.9 2.9-1.7Z"/></svg>
+          Get it on Google Play
+        </a>
+        <span class="free"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Free forever</span>
+      </div>
+      <div class="banner"><img src="hero.jpeg" alt="A glowing path leading to a mosque under a crescent moon, with the words Way to Islam"></div>
+    </div>
+  </section>
+
+  <div class="orn" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.6 5.4L20.5 4l-2.4 5.9L23 12l-4.9 2.1 2.4 5.9-5.9-2.4L12 23l-2.6-5.4L3.5 20l2.4-5.9L1 12l4.9-2.1L3.5 4l5.9 2.4z"/></svg>
+  </div>
+
+  <section class="mushaf-sec" aria-labelledby="why">
+    <div class="wrap">
+      <div class="mushaf"><div class="mushaf-in"><div class="mushaf-in-2">
+        <h2 id="why">Built to feel like opening a mushaf</h2>
+        <p class="intro">No clutter and no noise. Just the Quran, set in a layout that is easy on the eyes and easy to return to every day.</p>
+        <ul class="points">
+          <li><h3>Quran offline</h3><p>Read ayat anywhere, even without an internet connection.</p></li>
+          <li><h3>Mushaf-inspired design</h3><p>A calm, classic look inspired by old printed mushafs.</p></li>
+          <li><h3>Made for daily use</h3><p>Simple screens that keep what matters one tap away.</p></li>
+          <li><h3>Free forever</h3><p>No payment needed. Download it and start reading.</p></li>
+        </ul>
+      </div></div></div>
+    </div>
+  </section>
+
+  <section class="steps-sec" aria-labelledby="start">
+    <div class="wrap">
+      <h2 id="start">Start in three steps</h2>
+      <ol class="steps">
+        <li><h3>Download</h3><p>Open Google Play on your Android phone and install Way to Islam.</p></li>
+        <li><h3>Open the app</h3><p>Launch it and you are ready to go. Nothing to set up first.</p></li>
+        <li><h3>Begin reading</h3><p>Read at your own pace, whenever you have a quiet moment.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="cta" aria-labelledby="get">
+    <div class="wrap">
+      <h2 id="get">Take Way to Islam with you</h2>
+      <p>Free forever, on Google Play. Begin whenever you are ready.</p>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.wayto.islam">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 2.8 13.2 12 3.5 21.2c-.3-.3-.5-.8-.5-1.4V4.2c0-.6.2-1.1.5-1.4Zm10.8 10.3 2.6 2.5-10.9 6.2 8.3-8.7Zm0-2.2L5.9 2l10.9 6.2-2.5 2.7Zm3.7-1.7 2.9 1.7-2.9 2.9-2.9-2.9 2.9-1.7Z"/></svg>
+        Get it on Google Play
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Way to Islam</span>
+    <span>Made by Nexvoria Studios</span>
+  </div>
+</footer>
+
+</body>
+</html>
